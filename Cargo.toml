@@ -7,7 +7,7 @@ edition = "2021"
 exclude = ["dist", "build", "assets", "credits"]
 
 [workspace]
-members = ["mobile"]
+members = ["mobile", "car", "track", "light", "overture_maps"]
 
 [profile.dev.package."*"]
 opt-level = 3
@@ -28,6 +28,20 @@ lto = "thin"
 dev = [
     "bevy/bevy_dylib",
 ]
+
+[workspace.dependencies]
+bevy = { version = "0.11", default-features = false }
+bevy_rapier3d = { version = "0.22.0", features = [
+    "serde-serialize",
+    "dim3",
+], default-features = false }
+cfg-if = "1.0.0"
+rand = "0.8"
+
+bevy_garage_camera = { path = "./camera" }
+bevy_garage_car = { path = "./car", default-features = false }
+bevy_garage_track = { path = "./track" }
+bevy_garage_light = { path = "./light" }
 
 [dependencies]
 bevy = { version = "0.11", default-features = false, features = [
@@ -58,6 +72,12 @@ rand = { version = "0.8.3" }
 # keep the following in sync with Bevy's dependencies
 winit = { version = "0.28", default-features = false }
 image = { version = "0.24", default-features = false }
+bevy_rapier3d = { workspace = true, features = ["debug-render-3d"] }
+
+bevy_garage_camera = { workspace = true }
+bevy_garage_car = { workspace = true, default-features = true }
+bevy_garage_track = { workspace = true }
+bevy_garage_light = { workspace = true }
 
 [build-dependencies]
 embed-resource = "1.4"
