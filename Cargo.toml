@@ -30,7 +30,7 @@ dev = [
 ]
 
 [dependencies]
-bevy = { version = "0.11", default-features = false, features = [
+bevy = { version = "0.11.3", default-features = false, features = [
     "animation",
     "bevy_asset",
     "bevy_scene",
@@ -58,6 +58,12 @@ rand = { version = "0.8.3" }
 # keep the following in sync with Bevy's dependencies
 winit = { version = "0.28", default-features = false }
 image = { version = "0.24", default-features = false }
+
+# Game
+oxidized_navigation = { version = "0.7.0", features = ["debug_draw", "rapier"] }
+bevy_rapier3d = "0.22.0"
+futures-lite = "1.13.0"
+bevy_mod_picking = { version = "0.15.0", features = ["backend_rapier"] }
 
 [build-dependencies]
 embed-resource = "1.4"
